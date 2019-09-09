@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [[ $EUID -ne 0 ]]; then
+    err "Run dit script met root (sudo)"
+fi
+
 # Verwijder alle vorige installaties
 deluser --remove-home -q pkuser
 rm -rf /etc/project-kastje/
@@ -7,6 +11,9 @@ rm -rf /etc/project-kastje/
 # Maak nieuwe system dirs
 useradd -M -N -r -s /bin/false -c "Project Kastje System User" pkuser
 mkdir -p /etc/project-kastje/
+
+# Installeer dependencies met aptitude
+apt-get --assume-yes install screen
 
 
 
