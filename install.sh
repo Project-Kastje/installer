@@ -13,7 +13,7 @@ mkdir -p /etc/project-kastje/
 # Clone alle services
 git clone https://github.com/Project-Kastje/backend-service /etc/project-kastje/backend-service/
 chmod +x /etc/project-kastje/backend-service/service.py
-
+mariadb -u root < /etc/project-kastje/backend-service/create-database.sql
 
 
 # Start alle services
