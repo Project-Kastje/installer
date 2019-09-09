@@ -1,7 +1,8 @@
 #!/bin/bash
 
 if [[ $EUID -ne 0 ]]; then
-    err "Run dit script met root (sudo)"
+    echo "Run dit script met root (sudo)"
+    exit
 fi
 
 # Verwijder alle vorige installaties
@@ -15,6 +16,8 @@ mkdir -p /etc/project-kastje/
 # Installeer dependencies met aptitude
 apt-get --assume-yes install screen
 
+# Kill alle vorige screen instances
+screen -ls | awk -vFS='\t|[.]' '/backend-service-screen/ {system("screen -S "$2" -X quit")}'
 
 
 # Clone alle services
@@ -31,3 +34,7 @@ screen -d -m -S backend-service-screen bash -c 'python3 /etc/project-kastje/back
 
 # Root toegang is nodig om de systeembestanden te zien
 chmod -R 000 /etc/project-kastje/
+
+echo ""
+echo "Installatie success!!!!"
+echo ""
