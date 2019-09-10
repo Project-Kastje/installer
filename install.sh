@@ -42,7 +42,7 @@ apt-get --assume-yes purge apache2
 apt-get --assume-yes install apache2
 #service apache2 status
 a2enmod cgi
-mv ./frontend-website-apache.conf /etc/apache2/sites-enabled/000-default.conf
+cp ./frontend-website-apache.conf /etc/apache2/sites-enabled/000-default.conf
 service apache2 restart
 
 # Clone frontend-website
