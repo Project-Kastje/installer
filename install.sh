@@ -21,7 +21,7 @@ apt-get --assume-yes install screen python3 python3-pip
 screen -ls | awk -vFS='\t|[.]' '/backend-service-screen/ {system("screen -S "$2" -X quit")}'
 
 
-# Clone alle services
+# Clone backend-service
 git clone https://github.com/Project-Kastje/backend-service /etc/project-kastje/backend-service/
 chmod +x /etc/project-kastje/backend-service/service.py
 mariadb -u root < /etc/project-kastje/backend-service/delete-database.sql
@@ -41,8 +41,14 @@ a2enmod cgi
 mv ./frontend-website-apache.conf /etc/apache2/sites-enabled/000-default.conf
 service apache2 restart
 
+# Clone frontend-website
+git clone https://github.com/Project-Kastje/frontend-website /etc/project-kastje/frontend-website/
+
 # Root toegang zal nodig zijn om de systeembestanden te zien
 chmod -R 000 /etc/project-kastje/
+
+# TODO geef alleen apache2 www user permissies
+chmod -R 777 /etc/project-kastje/frontend-website/
 
 echo ""
 echo "Installatie success!!!!"
