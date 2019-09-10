@@ -14,6 +14,7 @@ useradd -M -N -r -s /bin/false -c "Project Kastje System User" pkuser
 mkdir -p /etc/project-kastje/
 
 # Installeer dependencies met aptitude
+apt-get update && apt-get upgrade
 apt-get --assume-yes install screen
 
 # Kill alle vorige screen instances
