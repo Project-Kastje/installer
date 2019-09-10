@@ -15,7 +15,7 @@ mkdir -p /etc/project-kastje/
 
 # Installeer dependencies met aptitude
 apt-get update && apt-get upgrade
-apt-get --assume-yes install screen
+apt-get --assume-yes install screen python3 python3-pip
 
 # Kill alle vorige screen instances
 screen -ls | awk -vFS='\t|[.]' '/backend-service-screen/ {system("screen -S "$2" -X quit")}'
@@ -26,7 +26,7 @@ git clone https://github.com/Project-Kastje/backend-service /etc/project-kastje/
 chmod +x /etc/project-kastje/backend-service/service.py
 mariadb -u root < /etc/project-kastje/backend-service/delete-database.sql
 mariadb -u root < /etc/project-kastje/backend-service/create-database.sql
-
+pip install pushbullet.py
 
 # Start alle services
 screen -d -m -S backend-service-screen bash -c 'python3 /etc/project-kastje/backend-service/service.py'
