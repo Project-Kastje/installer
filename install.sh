@@ -5,6 +5,10 @@ if [[ $EUID -ne 0 ]]; then
     exit
 fi
 
+# Update config files
+git fetch
+git merge
+
 # Verwijder alle vorige installaties
 deluser --remove-home -q pkuser
 rm -rf /etc/project-kastje/
