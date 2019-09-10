@@ -39,14 +39,16 @@ sudo screen -list 2>&1 | tee installer.log
 
 # Installeer apache2
 apt-get --assume-yes purge apache2
-apt-get --assume-yes install apache2
+apt-get --assume-yes install apache2 php libapache2-mod-php
 #service apache2 status
 a2enmod cgi
 cp ./frontend-website-apache.conf /etc/apache2/sites-enabled/000-default.conf
 service apache2 restart
 
 # Clone frontend-website
-git clone https://github.com/Project-Kastje/frontend-website /etc/project-kastje/frontend-website/
+#git clone https://github.com/Project-Kastje/frontend-website /etc/project-kastje/frontend-website/
+rm -rf /var/www/html/pk/
+git clone https://github.com/Project-Kastje/frontend-website /var/www/html/pk/
 
 # Root toegang zal nodig zijn om de systeembestanden te zien
 chmod -R 000 /etc/project-kastje/
