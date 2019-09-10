@@ -34,8 +34,8 @@ screen -d -m -S backend-service-screen bash -c 'python3 /etc/project-kastje/back
 sudo screen -list 2>&1 | tee installer.log
 
 # Installeer apache2
-apt-get purge apache2
-apt-get install apache2
+apt-get --assume-yes purge apache2
+apt-get --assume-yes install apache2
 #service apache2 status
 a2enmod cgi
 mv ./frontend-website-apache.conf /etc/apache2/sites-enabled/000-default.conf
