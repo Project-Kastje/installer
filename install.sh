@@ -43,9 +43,11 @@ sudo screen -list 2>&1 | tee installer.log
 
 # Installeer apache2
 apt-get --assume-yes purge apache2
-apt-get --assume-yes install apache2 php libapache2-mod-php
+apt-get --assume-yes install apache2 php libapache2-mod-php php7.0-fpm
 #service apache2 status
 a2enmod cgi
+a2enmod proxy_fcgi
+a2enmod php7.0-fpm
 cp ./frontend-website-apache.conf /etc/apache2/sites-enabled/000-default.conf
 service apache2 restart
 
