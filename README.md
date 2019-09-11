@@ -3,7 +3,7 @@
 Met 1 klik alles van Project Kastje installeren:
 
 ```sh
-cd ~ && rm -rf ./installer && git clone https://github.com/Project-Kastje/installer && cd installer && sudo ./install.sh
+cd ~ && sudo rm -rf ./installer && git clone https://github.com/Project-Kastje/installer && cd installer && sudo ./install.sh
 ```
 (kopieer alles daarboven en voer het uit in de Raspberry Pi)
 
