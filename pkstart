@@ -1,0 +1,4 @@
+#!/bin/bash
+
+screen -d -m -S backend-service-screen bash -c 'python3 /etc/project-kastje/backend-service/service.py'
+sudo screen -list 2>&1 | tee installer.log

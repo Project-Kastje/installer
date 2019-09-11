@@ -11,6 +11,7 @@ git merge
 
 # Installeer pkupdate
 cp pkupdate /bin/pkupdate
+cp pkstart /bin/pkstart
 
 # Verwijder alle vorige installaties
 deluser --remove-home -q pkuser
