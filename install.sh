@@ -9,6 +9,9 @@ fi
 git fetch
 git merge
 
+# Installeer pkupdate
+cp pkupdate /bin/pkupdate
+
 # Verwijder alle vorige installaties
 deluser --remove-home -q pkuser
 rm -rf /etc/project-kastje/
@@ -58,4 +61,7 @@ chmod -R 777 /etc/project-kastje/frontend-website/
 
 echo ""
 echo "Installatie success!!!!"
+echo "Gebruik vanaf nu het 'pkupdate' commando om te updaten!!!"
+echo "Maakt niet uit vanaf waar je dat uitvoert."
+echo "pkupdate zal om je git credentials vragen en automatisch committen."
 echo ""
