@@ -6,8 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Update config files
-git fetch
-git merge
+git fetch && git merge
 
 # Installeer pkupdate
 cp pkupdate /bin/pkupdate
@@ -45,6 +44,9 @@ sudo screen -list 2>&1 | tee installer.log
 apt-get --assume-yes purge apache2
 apt-get --assume-yes install apache2 php libapache2-mod-php php7.0-fpm
 #service apache2 status
+a2dismod mpm_event
+a2enmod mpm_prefork
+sudo a2enmod php7.0
 a2enmod cgi
 a2enmod proxy_fcgi
 a2enmod php7.0-fpm
