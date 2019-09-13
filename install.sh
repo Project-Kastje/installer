@@ -42,7 +42,7 @@ sudo screen -list 2>&1 | tee installer.log
 
 # Installeer apache2
 apt-get --assume-yes purge apache2
-apt-get --assume-yes install apache2 php libapache2-mod-php php7.0-fpm
+apt-get --assume-yes install apache2 php libapache2-mod-php php7.0-fpm php-mysql php7.0-mysql
 #service apache2 status
 a2dismod mpm_event
 a2enmod mpm_prefork
